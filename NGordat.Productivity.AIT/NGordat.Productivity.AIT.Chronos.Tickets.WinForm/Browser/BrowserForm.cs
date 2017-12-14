@@ -26,7 +26,7 @@ namespace NGordat.Productivity.AIT.Chronos.Tickets.WinForm.Browser
         /// <summary>
         /// EtherSecret base domain.
         /// </summary>
-        private readonly string ethersecret_base = ConfigurationManager.AppSettings["ethersecret_url"].ToString().Substring(0, 26);
+        private readonly string startingUrl = ConfigurationManager.AppSettings["chronos_url"].ToString();
 
         /// <summary>
         /// Initializes a new instance of <see cref="BrowserForm"/> class.
@@ -38,7 +38,7 @@ namespace NGordat.Productivity.AIT.Chronos.Tickets.WinForm.Browser
             Text = "CefSharp";
             WindowState = FormWindowState.Maximized;
 
-            browser = new ChromiumWebBrowser("about:blank")
+            browser = new ChromiumWebBrowser(startingUrl)
             {
                 Dock = DockStyle.Fill,
             };
@@ -54,7 +54,7 @@ namespace NGordat.Productivity.AIT.Chronos.Tickets.WinForm.Browser
             browser.AddressChanged += OnBrowserAddressChanged;
 
             var bitness = Environment.Is64BitProcess ? "x64" : "x86";
-            var version = String.Format("EtherSecret Scanner {3} loaded. Using chromium {0}, cef {1} and cefsharp {2} {3}.", Cef.ChromiumVersion, Cef.CefVersion, Cef.CefSharpVersion, bitness);
+            var version = String.Format("Chronos tickets {3}. Using chromium {0}, cef {1} and cefsharp {2} {3}.", Cef.ChromiumVersion, Cef.CefVersion, Cef.CefSharpVersion, bitness);
             DisplayOutput(version);
         }
 
@@ -90,24 +90,29 @@ namespace NGordat.Productivity.AIT.Chronos.Tickets.WinForm.Browser
             SetCanGoBack(args.CanGoBack);
             SetCanGoForward(args.CanGoForward);
 
-            if (!args.IsLoading && args.Browser.MainFrame.Url.StartsWith(ethersecret_base))
+            if (!args.IsLoading && args.Browser.MainFrame.Url.StartsWith(startingUrl))
             {
-                string script;
-                string styles;
-                using(TextReader tr = new StreamReader(@"Scripts/Payload.js"))
-	            {
-                    script = tr.ReadToEnd();
-	            }
-                using (TextReader tr = new StreamReader(@"Scripts/StylesInjector.js"))
-                {
-                    styles = tr.ReadToEnd();
-                }
+                // Polyfills
 
-                browser.ExecuteScriptAsync(styles);
-                browser.ExecuteScriptAsync(script);
+                // Vendors
+                this.ExecuteScript(@"Scripts/jquery-3.2.1.min.js");
+
+                // Payload
+                this.ExecuteScript(@"Scripts/Payload.js");
+                this.ExecuteScript(@"Scripts/StylesInjector.js");
             }
 
             this.InvokeOnUiThreadIfRequired(() => SetIsLoading(!args.CanReload));
+        }
+
+        private void ExecuteScript(string scriptLocation)
+        {
+            string script = string.Empty;
+            using (TextReader tr = new StreamReader(scriptLocation))
+            {
+                script = tr.ReadToEnd();
+            }
+            browser.ExecuteScriptAsync(script);
         }
 
         /// <summary>
