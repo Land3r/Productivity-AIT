@@ -1,0 +1,46 @@
+﻿<Window x:Class="NGordat.Net.Productivity.Timer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NGordat.Net.Productivity.Timer"
+        xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="AIT.Productivity.Timer" Height="200" Width="525" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="28" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="0" x:Name="MonthlyObjective" Content="Monthly Objective: 0:00:00" FontFamily="Sergoe UI" />
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Column="0" x:Name="WorkedDaysLabel" Content="Worked Days:" FontFamily="Sergoe UI" />
+            <toolkit:IntegerUpDown Grid.Column="1" x:Name="WorkedDaysUpDown" />
+        </Grid>
+        <Label Grid.Row="0" Grid.Column="1" x:Name="DailyObjective" Content="Daily Objective: 0:00:00" FontFamily="Sergoe UI" />
+        <Label Grid.Row="2" Grid.ColumnSpan="2" x:Name="TimerLabel" Content="0:00:00" FontFamily="Sergoe UI" FontSize="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Label Grid.Row="2" Grid.Column="0" x:Name="ObjectiveCompleteLabel" Content="Monthly Objective complete" FontWeight="Bold" Visibility="Hidden"/>
+        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" x:Name="Play" Click="Play_Click">Play</Button>
+            <Button Grid.Column="1" x:Name="Pause" Click="Pause_Click">Pause</Button>
+            <Button Grid.Column="2" x:Name="Reset" Click="Reset_Click">Reset</Button>
+        </Grid> 
+    </Grid>
+</Window>

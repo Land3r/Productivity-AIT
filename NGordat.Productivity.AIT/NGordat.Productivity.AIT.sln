@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2010
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NGordat.Productivity.AIT.Chronos.Tickets.WinForm", "NGordat.Productivity.AIT.Chronos.Tickets.WinForm\NGordat.Productivity.AIT.Chronos.Tickets.WinForm.csproj", "{9897EFFB-88B2-4583-A952-97FBE3C6A42E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - TIckets Chronos", "01 - TIckets Chronos", "{9F2B9F0C-1DE1-4ED1-903B-31C0666A9796}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Timer", "02 - Timer", "{345E27FC-1034-4B1C-9420-D6043219EF8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NGordat.Net.Productivity.Timer", "NGordat.Net.Productivity.Timer\NGordat.Net.Productivity.Timer.csproj", "{5DA9210D-3E85-45AF-9D29-023576605A0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +27,21 @@ Global
 		{9897EFFB-88B2-4583-A952-97FBE3C6A42E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9897EFFB-88B2-4583-A952-97FBE3C6A42E}.Release|x64.ActiveCfg = Release|x64
 		{9897EFFB-88B2-4583-A952-97FBE3C6A42E}.Release|x64.Build.0 = Release|x64
+		{5DA9210D-3E85-45AF-9D29-023576605A0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DA9210D-3E85-45AF-9D29-023576605A0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DA9210D-3E85-45AF-9D29-023576605A0A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5DA9210D-3E85-45AF-9D29-023576605A0A}.Debug|x64.Build.0 = Debug|Any CPU
+		{5DA9210D-3E85-45AF-9D29-023576605A0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DA9210D-3E85-45AF-9D29-023576605A0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DA9210D-3E85-45AF-9D29-023576605A0A}.Release|x64.ActiveCfg = Release|Any CPU
+		{5DA9210D-3E85-45AF-9D29-023576605A0A}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9897EFFB-88B2-4583-A952-97FBE3C6A42E} = {9F2B9F0C-1DE1-4ED1-903B-31C0666A9796}
+		{5DA9210D-3E85-45AF-9D29-023576605A0A} = {345E27FC-1034-4B1C-9420-D6043219EF8A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DB02D15F-4996-492C-876D-67BA374D1CF5}
